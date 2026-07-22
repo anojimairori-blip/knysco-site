@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg-off" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1D3557"/>
+      <stop offset="100%" stop-color="#2D6A4F"/>
+    </linearGradient>
+    <pattern id="grid-off" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="600" height="400" fill="url(#bg-off)"/>
+  <rect width="600" height="400" fill="url(#grid-off)"/>
+
+  <!-- ビル群（背景） -->
+  <g fill="rgba(255,255,255,0.08)">
+    <rect x="0" y="120" width="80" height="200"/>
+    <rect x="80" y="80" width="90" height="240"/>
+    <rect x="170" y="140" width="60" height="180"/>
+    <rect x="440" y="100" width="80" height="220"/>
+    <rect x="520" y="150" width="80" height="170"/>
+  </g>
+
+  <!-- ビル窓 -->
+  <g fill="rgba(255,255,255,0.15)">
+    <!-- 中央左のビル -->
+    <rect x="90" y="100" width="8" height="10"/>
+    <rect x="110" y="100" width="8" height="10"/>
+    <rect x="130" y="100" width="8" height="10"/>
+    <rect x="150" y="100" width="8" height="10"/>
+    <rect x="90" y="130" width="8" height="10"/>
+    <rect x="110" y="130" width="8" height="10"/>
+    <rect x="130" y="130" width="8" height="10"/>
+    <rect x="150" y="130" width="8" height="10"/>
+    <rect x="90" y="160" width="8" height="10"/>
+    <rect x="110" y="160" width="8" height="10"/>
+    <rect x="130" y="160" width="8" height="10"/>
+    <rect x="150" y="160" width="8" height="10"/>
+  </g>
+
+  <!-- 中央の会議室シーン -->
+  <g transform="translate(220, 170)">
+    <!-- 床 -->
+    <rect x="0" y="130" width="180" height="20" fill="rgba(0,0,0,0.2)"/>
+
+    <!-- デスク -->
+    <rect x="30" y="90" width="120" height="10" fill="#B08D57"/>
+    <rect x="35" y="100" width="8" height="30" fill="#8b6d3f"/>
+    <rect x="137" y="100" width="8" height="30" fill="#8b6d3f"/>
+
+    <!-- モニター -->
+    <rect x="60" y="55" width="60" height="38" fill="#1a1a1a" stroke="#4a4a4a" stroke-width="1"/>
+    <rect x="62" y="57" width="56" height="30" fill="#A8DADC"/>
+    <rect x="87" y="93" width="6" height="6" fill="#1a1a1a"/>
+
+    <!-- オフィスチェア -->
+    <g transform="translate(80, 110)">
+      <ellipse cx="10" cy="10" rx="10" ry="6" fill="#333"/>
+      <rect x="8" y="10" width="4" height="15" fill="#333"/>
+      <path d="M -5 25 L 25 25 L 22 30 L -2 30 Z" fill="#333"/>
+    </g>
+
+    <!-- 書類の山 -->
+    <g transform="translate(155, 65)">
+      <rect x="0" y="0" width="20" height="4" fill="#f5f5f5" stroke="#ccc"/>
+      <rect x="1" y="4" width="20" height="4" fill="#f5f5f5" stroke="#ccc"/>
+      <rect x="-1" y="8" width="20" height="4" fill="#f5f5f5" stroke="#ccc"/>
+      <rect x="2" y="12" width="20" height="4" fill="#f5f5f5" stroke="#ccc"/>
+    </g>
+
+    <!-- コーヒーカップ -->
+    <g transform="translate(35, 78)">
+      <ellipse cx="6" cy="0" rx="6" ry="2" fill="#8b6d3f"/>
+      <path d="M 0 0 L 0 10 L 12 10 L 12 0" fill="#f5f5f5" stroke="#ccc" stroke-width="1"/>
+      <ellipse cx="6" cy="10" rx="6" ry="1.5" fill="#8b6d3f"/>
+      <path d="M 12 3 Q 16 3 16 6 Q 16 9 12 8" fill="none" stroke="#f5f5f5" stroke-width="2"/>
+    </g>
+  </g>
+
+  <!-- 段ボール（右下） - 撤去感 -->
+  <g transform="translate(430, 250)">
+    <rect x="0" y="0" width="60" height="55" fill="#B08D57" stroke="#8b6d3f" stroke-width="1"/>
+    <line x1="0" y1="10" x2="60" y2="10" stroke="rgba(0,0,0,0.15)" stroke-width="1"/>
+    <text x="30" y="35" text-anchor="middle" fill="rgba(0,0,0,0.3)" font-family="Barlow, sans-serif" font-size="10" font-weight="bold">FRAGILE</text>
+  </g>
+  <g transform="translate(400, 220)">
+    <rect x="0" y="0" width="50" height="35" fill="#D4B87A" stroke="#8b6d3f" stroke-width="1"/>
+    <line x1="0" y1="8" x2="50" y2="8" stroke="rgba(0,0,0,0.15)" stroke-width="1"/>
+  </g>
+
+  <!-- ラベル -->
+  <text x="300" y="60" text-anchor="middle" fill="#D4B87A" font-family="Barlow, sans-serif" font-size="14" font-weight="700" letter-spacing="0.3em">SHOP &amp; OFFICE</text>
+  <text x="300" y="380" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-family="Noto Sans JP, sans-serif" font-size="12">店舗閉店・事務所移転の一括撤去</text>
+</svg>

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+  <!-- 背景グラデーション（深緑→深青） -->
+  <defs>
+    <linearGradient id="bg-ind" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1B4332"/>
+      <stop offset="100%" stop-color="#1D3557"/>
+    </linearGradient>
+    <linearGradient id="truck-body" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#B08D57"/>
+      <stop offset="100%" stop-color="#8b6d3f"/>
+    </linearGradient>
+    <pattern id="dots-ind" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="15" cy="15" r="1" fill="rgba(255,255,255,0.08)"/>
+    </pattern>
+  </defs>
+
+  <rect width="600" height="400" fill="url(#bg-ind)"/>
+  <rect width="600" height="400" fill="url(#dots-ind)"/>
+
+  <!-- 地面ライン -->
+  <line x1="0" y1="320" x2="600" y2="320" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="4 8"/>
+
+  <!-- 大型ダンプトラック -->
+  <g transform="translate(140, 180)">
+    <!-- コンテナ荷台 -->
+    <rect x="0" y="0" width="220" height="90" fill="url(#truck-body)" rx="4"/>
+    <rect x="0" y="0" width="220" height="90" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="2" rx="4"/>
+    <!-- コンテナ縦線（リブ） -->
+    <line x1="55" y1="0" x2="55" y2="90" stroke="rgba(0,0,0,0.15)" stroke-width="2"/>
+    <line x1="110" y1="0" x2="110" y2="90" stroke="rgba(0,0,0,0.15)" stroke-width="2"/>
+    <line x1="165" y1="0" x2="165" y2="90" stroke="rgba(0,0,0,0.15)" stroke-width="2"/>
+    <text x="110" y="55" text-anchor="middle" fill="rgba(0,0,0,0.4)" font-family="Barlow, sans-serif" font-size="18" font-weight="bold">KANAYAMA</text>
+
+    <!-- 運転席 -->
+    <path d="M -70 0 L -70 90 L 0 90 L 0 0 L -20 0 L -35 25 L -70 25 Z" fill="#f5f5f5"/>
+    <path d="M -35 25 L -20 5 L -5 5 L -5 25 Z" fill="#A8DADC"/>
+    <path d="M -35 25 L -20 5 L -5 5 L -5 25 Z" fill="none" stroke="rgba(0,0,0,0.3)" stroke-width="2"/>
+
+    <!-- タイヤ -->
+    <circle cx="-45" cy="90" r="16" fill="#1a1a1a"/>
+    <circle cx="-45" cy="90" r="8" fill="#4a4a4a"/>
+    <circle cx="30" cy="90" r="16" fill="#1a1a1a"/>
+    <circle cx="30" cy="90" r="8" fill="#4a4a4a"/>
+    <circle cx="180" cy="90" r="16" fill="#1a1a1a"/>
+    <circle cx="180" cy="90" r="8" fill="#4a4a4a"/>
+  </g>
+
+  <!-- リサイクルシンボル（右上） -->
+  <g transform="translate(490, 90)">
+    <circle cx="0" cy="0" r="45" fill="rgba(176,141,87,0.15)" stroke="rgba(176,141,87,0.4)" stroke-width="2"/>
+    <!-- リサイクル矢印3つ -->
+    <g fill="#D4B87A">
+      <!-- 上の矢印 -->
+      <path d="M 0 -25 L -8 -12 L -4 -12 L -4 -5 L 4 -5 L 4 -12 L 8 -12 Z"/>
+      <!-- 右下の矢印 -->
+      <path d="M 22 12 L 8 8 L 10 4 L 4 1 L 8 -6 L 15 -3 L 17 -7 Z"/>
+      <!-- 左下の矢印 -->
+      <path d="M -22 12 L -8 8 L -10 4 L -4 1 L -8 -6 L -15 -3 L -17 -7 Z"/>
+    </g>
+  </g>
+
+  <!-- 工場シルエット（背景） -->
+  <g fill="rgba(255,255,255,0.1)" transform="translate(20, 220)">
+    <rect x="0" y="20" width="60" height="80"/>
+    <rect x="60" y="0" width="70" height="100"/>
+    <rect x="130" y="30" width="50" height="70"/>
+    <rect x="180" y="10" width="60" height="90"/>
+    <rect x="80" y="-20" width="12" height="30"/>
+    <rect x="100" y="-30" width="12" height="40"/>
+  </g>
+
+  <!-- ラベル -->
+  <text x="300" y="60" text-anchor="middle" fill="#D4B87A" font-family="Barlow, sans-serif" font-size="14" font-weight="700" letter-spacing="0.3em">INDUSTRIAL WASTE</text>
+  <text x="300" y="380" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-family="Noto Sans JP, sans-serif" font-size="12">産業廃棄物 収集運搬処理</text>
+</svg>
