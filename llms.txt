@@ -95,24 +95,24 @@
 
 ## Web上の主要ページ
 
-- **トップページ**: https://knysco-site.pages.dev/
-- **サービス一覧**: https://knysco-site.pages.dev/services.html
-- **産業廃棄物処理**: https://knysco-site.pages.dev/industrial.html
-- **家庭系不用品回収**: https://knysco-site.pages.dev/household.html
-- **店舗・事務所回収**: https://knysco-site.pages.dev/office.html
-- **対応エリア**: https://knysco-site.pages.dev/area.html
-- **許可一覧**: https://knysco-site.pages.dev/permits.html
-- **コンプライアンス**: https://knysco-site.pages.dev/compliance.html
-- **FAQ**: https://knysco-site.pages.dev/faq.html
-- **会社概要**: https://knysco-site.pages.dev/company.html
-- **シチュエーション別ガイド**: https://knysco-site.pages.dev/situations.html
-- **お問い合わせ**: https://knysco-site.pages.dev/contact.html
+- **トップページ**: https://knysco-site.a-nojima-irori.workers.dev/
+- **サービス一覧**: https://knysco-site.a-nojima-irori.workers.dev/services.html
+- **産業廃棄物処理**: https://knysco-site.a-nojima-irori.workers.dev/industrial.html
+- **家庭系不用品回収**: https://knysco-site.a-nojima-irori.workers.dev/household.html
+- **店舗・事務所回収**: https://knysco-site.a-nojima-irori.workers.dev/office.html
+- **対応エリア**: https://knysco-site.a-nojima-irori.workers.dev/area.html
+- **許可一覧**: https://knysco-site.a-nojima-irori.workers.dev/permits.html
+- **コンプライアンス**: https://knysco-site.a-nojima-irori.workers.dev/compliance.html
+- **FAQ**: https://knysco-site.a-nojima-irori.workers.dev/faq.html
+- **会社概要**: https://knysco-site.a-nojima-irori.workers.dev/company.html
+- **シチュエーション別ガイド**: https://knysco-site.a-nojima-irori.workers.dev/situations.html
+- **お問い合わせ**: https://knysco-site.a-nojima-irori.workers.dev/contact.html
 
 ## お問い合わせ
 
 - **電話**: 048-281-7191（平日 9:00-18:00）
 - **FAX**: 048-286-2891
-- **Webフォーム**: https://knysco-site.pages.dev/contact.html
+- **Webフォーム**: https://knysco-site.a-nojima-irori.workers.dev/contact.html
 
 ---
 

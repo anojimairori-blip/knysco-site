@@ -31,4 +31,4 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
-Sitemap: https://knysco-site.pages.dev/sitemap.xml
+Sitemap: https://knysco-site.a-nojima-irori.workers.dev/sitemap.xml
