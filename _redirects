@@ -1,0 +1,5 @@
+# 旧WordPress（/contents/）の残骸をトップへ集約
+# ※ /contents/ 本体はクエリ判定が必要なため contents/index.html で処理する
+/contents/wp-*        /  301
+/contents/xmlrpc.php  /  301
+/contents/feed*       /  301

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,follow">
+<title>移転しました｜金山商事株式会社</title>
+<script>
+(function () {
+  var PAGE = {
+    "2":  "/company.html",     // 会社概要
+    "13": "/contact.html",     // お問い合わせ
+    "15": "/compliance.html",  // コンプライアンス
+    "18": "/services.html",    // 不用品回収
+    "20": "/household.html",   // 回収プラン 家庭系
+    "22": "/office.html",      // 回収プラン 店舗・事務所・産廃
+    "24": "/company.html",     // 会社の沿革
+    "26": "/faq.html",         // FAQ
+    "28": "/area.html",        // 回収エリア
+    "30": "/permits.html"      // 許可一覧
+  };
+  var q = new URLSearchParams(location.search);
+  var id = q.get("page_id");
+  var dest = (id && PAGE[id]) ? PAGE[id] : "/";
+  location.replace(dest);
+})();
+</script>
+<meta http-equiv="refresh" content="1;url=/">
+<style>
+body{font-family:system-ui,-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;
+     margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+     background:#f7f7f4;color:#23301f;text-align:center;padding:24px;line-height:1.9}
+a{color:#1d6b3a;font-weight:700}
+</style>
+</head>
+<body>
+<div>
+  <p>ホームページはリニューアルいたしました。<br>自動的に新しいページへ移動します。</p>
+  <p><a href="/">移動しない場合はこちらをクリックしてください</a></p>
+</div>
+</body>
+</html>

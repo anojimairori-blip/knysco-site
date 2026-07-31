@@ -8,14 +8,14 @@
 <meta name="keywords" content="お問い合わせ,無料お見積,産業廃棄物 相談,不用品回収 見積,金山商事">
 <meta name="author" content="金山商事株式会社">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="https://knysco-site.a-nojima-irori.workers.dev/contact.html">
+<link rel="canonical" href="https://kny-s.co.jp/contact.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="金山商事株式会社">
 <meta property="og:title" content="お問い合わせ・無料お見積り｜金山商事株式会社">
 <meta property="og:description" content="産業廃棄物・不用品回収のお問い合わせ・無料お見積りはこちらから。お電話 048-281-7191（平日9-18時）、お問い合わせフォーム（24時間受付）でご相談ください。関東4都県対応。">
-<meta property="og:url" content="https://knysco-site.a-nojima-irori.workers.dev/contact.html">
+<meta property="og:url" content="https://kny-s.co.jp/contact.html">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://knysco-site.a-nojima-irori.workers.dev/assets/img/logo.png">
+<meta property="og:image" content="https://kny-s.co.jp/assets/img/logo.png">
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -92,49 +92,54 @@
 
         <h2 style="font-size:20px; color:var(--green-deep); margin-bottom:16px; text-align:center;">✉️ メールフォームでのお問い合わせ</h2>
 
-        <form data-demo class="form-panel">
+        <form id="contactForm" class="form-panel" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+          <input type="hidden" name="subject" value="【金山商事HP】お問い合わせがありました">
+          <input type="hidden" name="from_name" value="金山商事 公式サイト">
+          <input type="hidden" name="redirect" value="https://kny-s.co.jp/contact.html?sent=1">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
           <div class="form-group">
             <label>お問い合わせ種別 <span class="required">*</span></label>
-            <select required id="contactCategory" name="category">
+            <select required id="contactCategory" name="お問い合わせ種別">
               <option value="">選択してください</option>
-              <option value="industrial">産業廃棄物処理のご相談</option>
-              <option value="office">店舗・事務所の不用品回収</option>
-              <option value="household">家庭系不用品回収・遺品整理</option>
-              <option value="estimate">お見積のご相談</option>
-              <option value="other">その他</option>
+              <option value="産業廃棄物処理のご相談">産業廃棄物処理のご相談</option>
+              <option value="店舗・事務所の不用品回収">店舗・事務所の不用品回収</option>
+              <option value="家庭系不用品回収・遺品整理">家庭系不用品回収・遺品整理</option>
+              <option value="お見積のご相談">お見積のご相談</option>
+              <option value="その他">その他</option>
             </select>
           </div>
           <div class="form-group">
             <label>お客様種別 <span class="required">*</span></label>
-            <select required name="type">
+            <select required name="お客様種別">
               <option value="">選択してください</option>
-              <option value="business">法人・事業者</option>
-              <option value="personal">個人</option>
+              <option value="法人・事業者">法人・事業者</option>
+              <option value="個人">個人</option>
             </select>
           </div>
           <div class="form-group">
             <label>会社名・組織名（法人の方）</label>
-            <input type="text" placeholder="株式会社○○">
+            <input type="text" name="会社名・組織名" placeholder="株式会社○○">
           </div>
           <div class="form-group">
             <label>ご担当者名 <span class="required">*</span></label>
-            <input type="text" required placeholder="山田 太郎">
+            <input type="text" name="ご担当者名" required placeholder="山田 太郎">
           </div>
           <div class="form-group">
             <label>電話番号 <span class="required">*</span></label>
-            <input type="tel" required placeholder="048-XXX-XXXX">
+            <input type="tel" name="電話番号" required placeholder="048-XXX-XXXX">
           </div>
           <div class="form-group">
             <label>メールアドレス <span class="required">*</span></label>
-            <input type="email" required placeholder="you@example.com">
+            <input type="email" name="メールアドレス" required placeholder="you@example.com">
           </div>
           <div class="form-group">
             <label>ご住所（現地エリア）<span class="required">*</span></label>
-            <input type="text" required placeholder="埼玉県川口市...">
+            <input type="text" name="ご住所・現地エリア" required placeholder="埼玉県川口市...">
           </div>
           <div class="form-group">
             <label>ご相談内容 <span class="required">*</span></label>
-            <textarea rows="6" required placeholder="廃棄物の種類・数量・お引取り希望日など、可能な範囲でお書きください。&#10;現地確認が必要な場合はご希望日時もお知らせください。"></textarea>
+            <textarea name="ご相談内容" rows="6" required placeholder="廃棄物の種類・数量・お引取り希望日など、可能な範囲でお書きください。&#10;現地確認が必要な場合はご希望日時もお知らせください。"></textarea>
           </div>
           <div style="text-align:center; margin-top:32px;">
             <button type="submit" class="btn btn-primary btn-lg">送信する（無料お見積り）</button>
@@ -159,13 +164,34 @@
   </section>
 
 <script>
-  const params = new URLSearchParams(window.location.search);
-  const cat = params.get('category');
-  const sel = document.getElementById('contactCategory');
-  if (cat && sel) {
-    const opt = Array.from(sel.options).find(o => o.value === cat);
-    if (opt) sel.value = cat;
+(function () {
+  var form = document.getElementById('contactForm');
+  if (!form) return;
+  var keyEl = form.querySelector('input[name="access_key"]');
+  var configured = keyEl && keyEl.value.indexOf('YOUR_') !== 0;
+
+  // 送信完了メッセージ
+  if (new URLSearchParams(location.search).get('sent') === '1') {
+    var ok = document.createElement('div');
+    ok.setAttribute('role', 'status');
+    ok.style.cssText = 'margin:0 0 24px; padding:20px 24px; border-radius:10px; background:#e8f5ec; border-left:5px solid var(--green-deep); font-size:14px; line-height:1.9;';
+    ok.innerHTML = '<strong>お問い合わせを送信しました。</strong><br>ご入力いただいたメールアドレス宛に、担当者より原則2営業日以内にご返信いたします。<br>お急ぎの場合はお電話（048-281-7191）でもご相談を承ります。';
+    form.parentNode.insertBefore(ok, form);
+    history.replaceState(null, '', location.pathname);
   }
+
+  // アクセスキー未設定時は送信させず、電話・FAXへ誘導する（無言で消えるのを防ぐ）
+  if (!configured) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert('申し訳ございません。ただいまメールフォームを調整中です。\n恐れ入りますが、お電話 048-281-7191（平日9:00-18:00）または FAX 048-286-2891 にてご連絡ください。');
+    });
+    var warn = document.createElement('p');
+    warn.style.cssText = 'margin:0 0 16px; padding:14px 18px; border-radius:8px; background:#fff6e5; border-left:4px solid var(--gold); font-size:13px; line-height:1.8;';
+    warn.innerHTML = 'ただいまメールフォームを調整中です。お急ぎの方は <strong>048-281-7191</strong>（平日9:00-18:00）または FAX <strong>048-286-2891</strong> をご利用ください。';
+    form.parentNode.insertBefore(warn, form);
+  }
+})();
 </script>
 </main>
 
@@ -229,11 +255,11 @@
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://knysco-site.a-nojima-irori.workers.dev/#organization",
+      "@id": "https://kny-s.co.jp/#organization",
       "name": "金山商事株式会社",
       "alternateName": "KANAYAMA SHOJI Co., Ltd.",
-      "url": "https://knysco-site.a-nojima-irori.workers.dev/",
-      "logo": "https://knysco-site.a-nojima-irori.workers.dev/assets/img/logo.png",
+      "url": "https://kny-s.co.jp/",
+      "logo": "https://kny-s.co.jp/assets/img/logo.png",
       "description": "1988年創業、埼玉県川口市の産業・一般廃棄物 収集運搬処理業。関東地区(埼玉・東京・栃木・茨城)対応。",
       "foundingDate": "1988-10-06",
       "address": {
@@ -254,12 +280,12 @@
     },
     {
       "@type": "LocalBusiness",
-      "@id": "https://knysco-site.a-nojima-irori.workers.dev/#localbusiness",
+      "@id": "https://kny-s.co.jp/#localbusiness",
       "name": "金山商事株式会社",
-      "image": "https://knysco-site.a-nojima-irori.workers.dev/assets/img/logo.png",
+      "image": "https://kny-s.co.jp/assets/img/logo.png",
       "telephone": "+81-48-281-7191",
       "faxNumber": "+81-48-286-2891",
-      "url": "https://knysco-site.a-nojima-irori.workers.dev/",
+      "url": "https://kny-s.co.jp/",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "安行領根岸1324-5",

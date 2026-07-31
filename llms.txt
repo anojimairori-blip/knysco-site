@@ -93,24 +93,24 @@
 
 ## Web上の主要ページ
 
-- **トップページ**: https://knysco-site.a-nojima-irori.workers.dev/
-- **サービス一覧**: https://knysco-site.a-nojima-irori.workers.dev/services.html
-- **産業廃棄物処理**: https://knysco-site.a-nojima-irori.workers.dev/industrial.html
-- **家庭系不用品回収**: https://knysco-site.a-nojima-irori.workers.dev/household.html
-- **店舗・事務所回収**: https://knysco-site.a-nojima-irori.workers.dev/office.html
-- **対応エリア**: https://knysco-site.a-nojima-irori.workers.dev/area.html
-- **許可一覧**: https://knysco-site.a-nojima-irori.workers.dev/permits.html
-- **コンプライアンス**: https://knysco-site.a-nojima-irori.workers.dev/compliance.html
-- **FAQ**: https://knysco-site.a-nojima-irori.workers.dev/faq.html
-- **会社概要**: https://knysco-site.a-nojima-irori.workers.dev/company.html
-- **シチュエーション別ガイド**: https://knysco-site.a-nojima-irori.workers.dev/situations.html
-- **お問い合わせ**: https://knysco-site.a-nojima-irori.workers.dev/contact.html
+- **トップページ**: https://kny-s.co.jp/
+- **サービス一覧**: https://kny-s.co.jp/services.html
+- **産業廃棄物処理**: https://kny-s.co.jp/industrial.html
+- **家庭系不用品回収**: https://kny-s.co.jp/household.html
+- **店舗・事務所回収**: https://kny-s.co.jp/office.html
+- **対応エリア**: https://kny-s.co.jp/area.html
+- **許可一覧**: https://kny-s.co.jp/permits.html
+- **コンプライアンス**: https://kny-s.co.jp/compliance.html
+- **FAQ**: https://kny-s.co.jp/faq.html
+- **会社概要**: https://kny-s.co.jp/company.html
+- **シチュエーション別ガイド**: https://kny-s.co.jp/situations.html
+- **お問い合わせ**: https://kny-s.co.jp/contact.html
 
 ## お問い合わせ
 
 - **電話**: 048-281-7191（平日 9:00-18:00）
 - **FAX**: 048-286-2891
-- **Webフォーム**: https://knysco-site.a-nojima-irori.workers.dev/contact.html
+- **Webフォーム**: https://kny-s.co.jp/contact.html
 
 ---
 
