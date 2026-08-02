@@ -14,14 +14,11 @@
     "enabled": true
   },
   "vars": {
-    "MAIL_HOST": "greenkitten19.sakura.ne.jp",
-    "MAIL_PORT": "465",
-    "MAIL_USER": "info@kny-s.co.jp",
+    "MAIL_FROM": "info@send.kny-s.co.jp",
     "MAIL_TO": "info@kny-s.co.jp",
     "MAIL_FROM_NAME": "金山商事株式会社 お問い合わせフォーム",
     "TEL_DISPLAY": "048-281-7191",
     "FAX_DISPLAY": "048-286-2891",
-    "AUTO_REPLY": "1",
-    "DIAG_KEY": "nojima-diag-20260802"
+    "AUTO_REPLY": "1"
   }
 }

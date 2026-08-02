@@ -5,7 +5,7 @@
  * ・/api/contact  … お問い合わせフォームの受付（POST）
  * ・それ以外       … 静的アセットをそのまま配信
  */
-import { sendMail, sanitizeHeaderValue } from './mailer.js';
+import { sendMail, sanitizeHeaderValue } from './mailer-resend.js';
 
 const ALLOWED_ORIGINS = ['https://kny-s.co.jp', 'https://www.kny-s.co.jp'];
 
@@ -196,12 +196,8 @@ async function handleContact(request, env) {
   ].join('\n');
 
   const mailCfg = {
-    host: env.MAIL_HOST,
-    port: Number(env.MAIL_PORT || 465),
-    user: env.MAIL_USER,
-    pass: env.MAIL_PASS,
-    fromEmail: env.MAIL_USER,
-    fromName: env.MAIL_FROM_NAME,
+    apiKey: env.RESEND_API_KEY,
+    from: `${env.MAIL_FROM_NAME} <${env.MAIL_FROM}>`,
   };
 
   try {
@@ -275,95 +271,10 @@ export default {
     if (url.pathname === '/api/contact') {
       return handleContact(request, env);
     }
-    // 診断用（?key= が一致したときだけSMTP接続を試す。メール本文は送らない）
-    if (url.pathname === '/api/smtp-check') {
-      const key = url.searchParams.get('key') || '';
-      if (!env.DIAG_KEY || key !== env.DIAG_KEY) {
-        return new Response('forbidden', { status: 403 });
-      }
-      const out = [];
-      const { connect } = await import('cloudflare:sockets');
-      for (const [port, mode] of [[465, 'on'], [587, 'starttls'], [587, 'off']]) {
-        const r = { port, mode };
-        try {
-          const sock = connect({ hostname: env.MAIL_HOST, port },
-            mode === 'off' ? {} : { secureTransport: mode });
-          const t0 = Date.now();
-          await Promise.race([
-            sock.opened,
-            new Promise((_, rj) => setTimeout(() => rj(new Error('timeout 8s')), 8000)),
-          ]);
-          r.opened = true;
-          const reader = sock.readable.getReader();
-          const greet = await Promise.race([
-            reader.read(),
-            new Promise((_, rj) => setTimeout(() => rj(new Error('greet timeout 8s')), 8000)),
-          ]);
-          r.greeting = new TextDecoder().decode(greet.value || new Uint8Array()).trim().slice(0, 120);
-          r.ms = Date.now() - t0;
-          try { reader.releaseLock(); await sock.close(); } catch (_) {}
-        } catch (e) {
-          r.error = String(e && e.message || e).slice(0, 200);
-        }
-        out.push(r);
-      }
-      return new Response(JSON.stringify(out, null, 2), {
-        headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
-      });
-    }
-
-    // AUTH 診断：ユーザー名の形を変えて認証だけ試す（メールは送らない）
-    if (url.pathname === '/api/auth-check') {
-      if (!env.DIAG_KEY || url.searchParams.get('key') !== env.DIAG_KEY) {
-        return new Response('forbidden', { status: 403 });
-      }
-      const { connect } = await import('cloudflare:sockets');
-      const users = [
-        [env.MAIL_USER, 'info@greenkitten19.sakura.ne.jp'],
-        [env.MAIL_USER, env.MAIL_USER],
-        ['info@greenkitten19.sakura.ne.jp', 'info@greenkitten19.sakura.ne.jp'],
-        [env.MAIL_USER, 'info@www905.sakura.ne.jp'],
-      ];
-      const results = [];
-      for (const [u, mf] of users) {
-        const r = { authUser: u, mailFromAddr: mf };
-        let sock;
-        try {
-          sock = connect({ hostname: env.MAIL_HOST, port: 465 }, { secureTransport: 'on' });
-          await sock.opened;
-          const w = sock.writable.getWriter(), rd = sock.readable.getReader();
-          const dec = new TextDecoder(), enc = new TextEncoder();
-          const read = async () => dec.decode((await rd.read()).value || new Uint8Array()).trim();
-          const cmd = async (t) => { await w.write(enc.encode(t + '\r\n')); return read(); };
-          await read();                       // greeting
-          await cmd('EHLO kny-s.co.jp');
-          const a1 = await cmd('AUTH LOGIN');
-          r.authPrompt = a1.slice(0, 40);
-          await cmd(btoa(u));
-          const a3 = await cmd(btoa(env.MAIL_PASS));
-          r.authResult = a3.slice(0, 90);
-          if (a3.startsWith('235')) {
-            const mfr = await cmd('MAIL FROM:<' + mf + '>');
-            r.mailFrom = mfr.slice(0, 80);
-            const rc = await cmd('RCPT TO:<' + env.MAIL_TO + '>');
-            r.rcptTo = rc.slice(0, 70);
-          }
-          try { await cmd('QUIT'); rd.releaseLock(); await sock.close(); } catch (_) {}
-        } catch (e) {
-          r.error = String(e && e.message || e).slice(0, 160);
-          try { await sock.close(); } catch (_) {}
-        }
-        results.push(r);
-      }
-      return new Response(JSON.stringify(results, null, 2), {
-        headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
-      });
-    }
-
     // 疎通確認用（メールは送らない）
     if (url.pathname === '/api/health') {
       return new Response(
-        JSON.stringify({ ok: true, host: env.MAIL_HOST, port: env.MAIL_PORT, hasPass: !!env.MAIL_PASS }),
+        JSON.stringify({ ok: true, from: env.MAIL_FROM, to: env.MAIL_TO, hasKey: !!env.RESEND_API_KEY }),
         { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } }
       );
     }
