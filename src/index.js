@@ -319,13 +319,14 @@ export default {
       }
       const { connect } = await import('cloudflare:sockets');
       const users = [
-        env.MAIL_USER,
-        'info@greenkitten19.sakura.ne.jp',
-        'info',
+        [env.MAIL_USER, 'info@greenkitten19.sakura.ne.jp'],
+        [env.MAIL_USER, env.MAIL_USER],
+        ['info@greenkitten19.sakura.ne.jp', 'info@greenkitten19.sakura.ne.jp'],
+        [env.MAIL_USER, 'info@www905.sakura.ne.jp'],
       ];
       const results = [];
-      for (const u of users) {
-        const r = { user: u };
+      for (const [u, mf] of users) {
+        const r = { authUser: u, mailFromAddr: mf };
         let sock;
         try {
           sock = connect({ hostname: env.MAIL_HOST, port: 465 }, { secureTransport: 'on' });
@@ -342,8 +343,8 @@ export default {
           const a3 = await cmd(btoa(env.MAIL_PASS));
           r.authResult = a3.slice(0, 90);
           if (a3.startsWith('235')) {
-            const mf = await cmd('MAIL FROM:<' + env.MAIL_USER + '>');
-            r.mailFrom = mf.slice(0, 70);
+            const mfr = await cmd('MAIL FROM:<' + mf + '>');
+            r.mailFrom = mfr.slice(0, 80);
             const rc = await cmd('RCPT TO:<' + env.MAIL_TO + '>');
             r.rcptTo = rc.slice(0, 70);
           }
