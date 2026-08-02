@@ -14,7 +14,7 @@
     "enabled": true
   },
   "vars": {
-    "MAIL_FROM": "info@send.kny-s.co.jp",
+    "MAIL_FROM": "info@kny-s.co.jp",
     "MAIL_TO": "info@kny-s.co.jp",
     "MAIL_FROM_NAME": "金山商事株式会社 お問い合わせフォーム",
     "TEL_DISPLAY": "048-281-7191",
