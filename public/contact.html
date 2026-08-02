@@ -652,18 +652,23 @@
       .then(function (r) { return r.json(); })
       .then(function (j) {
         if (j.found) {
+          var inArea = false;
           if (pref) {
-            var ok = false;
             for (var i = 0; i < pref.options.length; i++) {
-              if (pref.options[i].value === j.pref) { pref.selectedIndex = i; ok = true; break; }
+              if (pref.options[i].value === j.pref) { pref.selectedIndex = i; inArea = true; break; }
             }
-            if (!ok) pref.value = 'その他・未定';
+            if (!inArea) pref.value = 'その他・未定';
           }
           if (city && !city.value) city.value = j.city;
-          showNote('', j.pref + ' ' + j.city + ' を入力しました。続きの番地をご記入ください。');
+          if (inArea) {
+            showNote('', j.pref + ' ' + j.city + ' を入力しました。続きの番地をご記入ください。');
+          } else {
+            showNote('err', j.pref + ' ' + j.city + ' は通常の対応エリア外です。'
+                   + 'ご相談は承りますので、そのまま送信してください。');
+          }
         } else {
           if (pref) pref.value = 'その他・未定';
-          showNote('err', '対応エリア外の可能性があります。お手数ですが都県と市区町村をご記入ください。');
+          showNote('err', '郵便番号が見つかりませんでした。お手数ですが都県と市区町村をご記入ください。');
         }
       })
       .catch(function () { showNote('', ''); });
