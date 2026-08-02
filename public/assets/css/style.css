@@ -777,3 +777,19 @@ h1, h2, h3, h4 { font-family: var(--serif); color: var(--ink); font-weight: 500;
   .cta-tel-num { font-size: 20px; }
   .permit-table th, .permit-table td { padding: 10px 12px; font-size: 12.5px; }
 }
+
+/* ============================================================
+   AREA ICON — 県別地図（野島技研 2026-08-02）
+   ============================================================ */
+.area-card .area-icon svg {
+  width: 56px; height: 56px; display: block; margin: 0 auto;
+}
+.area-card .area-icon svg path {
+  fill: var(--green, #2d7a3e);
+  stroke: var(--green-deep, #1a5c2a);
+  stroke-width: 1.2;
+  stroke-linejoin: round;
+  transition: fill .25s ease, transform .25s ease;
+}
+.area-card:hover .area-icon svg path { fill: var(--green-deep, #1a5c2a); }
+@media (max-width: 600px) { .area-card .area-icon svg { width: 46px; height: 46px; } }
