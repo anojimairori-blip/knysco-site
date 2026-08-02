@@ -812,3 +812,94 @@ h1, h2, h3, h4 { font-family: var(--serif); color: var(--ink); font-weight: 500;
 .wt-opt:has(input:checked) {
   background: var(--paper-off, #f3f8f4); border-color: var(--green, #2d7a3e); font-weight: 700;
 }
+
+/* ============================================================
+   PRINT — 印刷レイアウト（野島技研 2026-08-02）
+   会社概要・許可一覧を印刷して提出/保管する場面を想定
+   ============================================================ */
+@media print {
+
+  /* ---- 印刷しない要素 ---- */
+  .top-bar,
+  .site-header,
+  header,
+  nav,
+  .breadcrumb,
+  .site-footer,
+  footer,
+  .cta,
+  .cta-section,
+  .hero-cta,
+  .btn,
+  .wt-opt,
+  #turnstileBox,
+  #formMsg,
+  form,
+  .form-panel,
+  details,
+  .area-icon svg,
+  script { display: none !important; }
+
+  /* ---- 基本 ---- */
+  @page { size: A4; margin: 14mm 12mm; }
+
+  html, body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 10.5pt;
+    line-height: 1.65;
+  }
+  .container { max-width: 100% !important; padding: 0 !important; }
+  .section { padding: 0 0 8mm !important; }
+
+  /* ---- 文字色を印刷向けに ---- */
+  h1, h2, h3, h4, p, li, td, th, dt, dd, span, div {
+    color: #000 !important;
+    text-shadow: none !important;
+  }
+  h1 { font-size: 16pt; border-bottom: 1.5pt solid #000; padding-bottom: 2mm; }
+  h2 { font-size: 13pt; border-left: 3pt solid #000; padding-left: 3mm; }
+  h3 { font-size: 11.5pt; }
+
+  /* ---- 改ページ制御 ---- */
+  h1, h2, h3 { break-after: avoid; page-break-after: avoid; }
+  table, .permit-table, .situation-card, .area-card, .info-table {
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  img, svg { break-inside: avoid; max-width: 100% !important; }
+
+  /* ---- 表を印刷向けに ---- */
+  table, .permit-table, .info-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+  th, td {
+    border: 0.5pt solid #666 !important;
+    padding: 2mm 3mm !important;
+    background: #fff !important;
+  }
+  thead { display: table-header-group; }   /* 複数ページに跨るとき見出しを繰り返す */
+
+  /* ---- カード類の枠を残す ---- */
+  .situation-card, .area-card, .card {
+    border: 0.5pt solid #999 !important;
+    background: #fff !important;
+    box-shadow: none !important;
+    padding: 3mm !important;
+  }
+
+  /* ---- リンクは下線のみ（URLは出さない：紙面が煩雑になるため）---- */
+  a { color: #000 !important; text-decoration: underline; }
+  a[href^="http"]::after { content: ""; }
+
+  /* ---- 印刷時のみ表示する社名ヘッダ ---- */
+  body::before {
+    content: "金山商事株式会社　https://kny-s.co.jp/　TEL 048-281-7191";
+    display: block;
+    font-size: 8.5pt;
+    color: #444 !important;
+    border-bottom: 0.5pt solid #999;
+    padding-bottom: 2mm;
+    margin-bottom: 5mm;
+  }
+}
