@@ -31,4 +31,53 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
+# ============================================================
+# 営業リスト収集・被リンク解析ボットの拒否（野島技研 2026-08-02）
+# ※ 検索エンジンとAI検索クローラーは上記のとおり許可しています
+# ============================================================
+
+# SEO・被リンク解析（連絡先を収集し営業リスト化されやすい）
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+User-agent: SeekportBot
+Disallow: /
+
+User-agent: serpstatbot
+Disallow: /
+
+User-agent: ZoominfoBot
+Disallow: /
+
+User-agent: Barkrowler
+Disallow: /
+
+# コンテンツ複製・アーカイブ
+User-agent: MegaIndex
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: SiteAuditBot
+Disallow: /
+
+User-agent: Sogou web spider
+Disallow: /
+
 Sitemap: https://kny-s.co.jp/sitemap.xml
