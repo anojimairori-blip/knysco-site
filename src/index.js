@@ -6,6 +6,7 @@
  * ・それ以外       … 静的アセットをそのまま配信
  */
 import { sendMail, sanitizeHeaderValue } from './mailer-resend.js';
+import { lookupZip } from './zipdb.js';
 
 const ALLOWED_ORIGINS = ['https://kny-s.co.jp', 'https://www.kny-s.co.jp'];
 
@@ -127,6 +128,7 @@ async function handleContact(request, env) {
     name: sanitizeHeaderValue(val(form, 'name', 60)),
     tel: sanitizeHeaderValue(val(form, 'tel', 30)),
     email: sanitizeHeaderValue(val(form, 'email', 120)),
+    zip: sanitizeHeaderValue(val(form, 'zip', 10)),
     pref: sanitizeHeaderValue(val(form, 'pref', 20)),
     city: sanitizeHeaderValue(val(form, 'city', 100)),
     waste: sanitizeHeaderValue(val(form, 'waste_type[]', 300)) || sanitizeHeaderValue(val(form, 'waste_type', 300)),
@@ -177,7 +179,7 @@ async function handleContact(request, env) {
     `ご担当者名　　　： ${f.name}`,
     `電話番号　　　　： ${f.tel}`,
     `メールアドレス　： ${f.email}`,
-    `作業場所　　　　： ${f.pref} ${f.city}`,
+    `作業場所　　　　： ${f.zip ? '〒' + f.zip + '　' : ''}${f.pref} ${f.city}`,
     line,
     `廃棄物の種類　　： ${or(f.waste)}`,
     `おおよその数量　： ${or(f.amount)}`,
@@ -269,6 +271,15 @@ export default {
     if (url.pathname === '/api/contact') {
       return handleContact(request, env);
     }
+    // 郵便番号 → 住所（対応5都県のみ・外部API不使用）
+    if (url.pathname === '/api/zip') {
+      const hit = lookupZip(url.searchParams.get('z') || '');
+      return new Response(
+        JSON.stringify(hit ? { found: true, ...hit } : { found: false }),
+        { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=86400' } }
+      );
+    }
+
     // 疎通確認用（メールは送らない）
     if (url.pathname === '/api/health') {
       return new Response(
