@@ -793,3 +793,22 @@ h1, h2, h3, h4 { font-family: var(--serif); color: var(--ink); font-weight: 500;
 }
 .area-card:hover .area-icon svg path { fill: var(--green-deep, #1a5c2a); }
 @media (max-width: 600px) { .area-card .area-icon svg { width: 46px; height: 46px; } }
+
+/* ============================================================
+   FORM — 廃棄物の種類チェックボックス（タップ領域の確保）
+   ============================================================ */
+.wt-opt {
+  display: flex; align-items: center; gap: 10px;
+  min-height: 44px; padding: 4px 10px;
+  font-weight: 400; font-size: 14px; cursor: pointer;
+  border: 1px solid var(--line, #e0e0e0); border-radius: 8px;
+  transition: background .2s ease, border-color .2s ease;
+}
+.wt-opt:hover { background: var(--paper-off, #f7f5f0); border-color: var(--green, #2d7a3e); }
+.wt-opt input[type="checkbox"] {
+  width: 20px; height: 20px; flex: 0 0 20px; margin: 0; cursor: pointer;
+  accent-color: var(--green-deep, #1a5c2a);
+}
+.wt-opt:has(input:checked) {
+  background: var(--paper-off, #f3f8f4); border-color: var(--green, #2d7a3e); font-weight: 700;
+}
