@@ -210,9 +210,7 @@ async function handleContact(request, env) {
     });
   } catch (err) {
     console.error('mail error', err && err.message);
-    const detail = (env.DIAG_KEY && new URL(request.url).searchParams.get('diag') === env.DIAG_KEY)
-      ? String(err && err.message || err).slice(0, 400) : undefined;
-    return json({ success: false, message: '送信処理でエラーが発生しました。お手数ですがお電話にてご連絡ください。', detail }, 500, origin);
+    return json({ success: false, message: '送信処理でエラーが発生しました。お手数ですがお電話にてご連絡ください。' }, 500, origin);
   }
 
   // 自動返信（失敗しても本体の受付は成功扱い）
