@@ -1,6 +1,0 @@
-.git
-.git/**
-.assetsignore
-wrangler.jsonc
-wrangler.toml
-README.md
