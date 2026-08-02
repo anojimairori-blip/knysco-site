@@ -214,7 +214,9 @@ async function handleContact(request, env) {
     });
   } catch (err) {
     console.error('mail error', err && err.message);
-    return json({ success: false, message: '送信処理でエラーが発生しました。お手数ですがお電話にてご連絡ください。' }, 500, origin);
+    const detail = (env.DIAG_KEY && new URL(request.url).searchParams.get('key') === env.DIAG_KEY)
+      ? String(err && err.message || err).slice(0, 300) : undefined;
+    return json({ success: false, message: '送信処理でエラーが発生しました。お手数ですがお電話にてご連絡ください。', detail }, 500, origin);
   }
 
   // 自動返信（失敗しても本体の受付は成功扱い）
@@ -273,6 +275,43 @@ export default {
     if (url.pathname === '/api/contact') {
       return handleContact(request, env);
     }
+    // 診断用（?key= が一致したときだけSMTP接続を試す。メール本文は送らない）
+    if (url.pathname === '/api/smtp-check') {
+      const key = url.searchParams.get('key') || '';
+      if (!env.DIAG_KEY || key !== env.DIAG_KEY) {
+        return new Response('forbidden', { status: 403 });
+      }
+      const out = [];
+      const { connect } = await import('cloudflare:sockets');
+      for (const [port, mode] of [[465, 'on'], [587, 'starttls'], [587, 'off']]) {
+        const r = { port, mode };
+        try {
+          const sock = connect({ hostname: env.MAIL_HOST, port },
+            mode === 'off' ? {} : { secureTransport: mode });
+          const t0 = Date.now();
+          await Promise.race([
+            sock.opened,
+            new Promise((_, rj) => setTimeout(() => rj(new Error('timeout 8s')), 8000)),
+          ]);
+          r.opened = true;
+          const reader = sock.readable.getReader();
+          const greet = await Promise.race([
+            reader.read(),
+            new Promise((_, rj) => setTimeout(() => rj(new Error('greet timeout 8s')), 8000)),
+          ]);
+          r.greeting = new TextDecoder().decode(greet.value || new Uint8Array()).trim().slice(0, 120);
+          r.ms = Date.now() - t0;
+          try { reader.releaseLock(); await sock.close(); } catch (_) {}
+        } catch (e) {
+          r.error = String(e && e.message || e).slice(0, 200);
+        }
+        out.push(r);
+      }
+      return new Response(JSON.stringify(out, null, 2), {
+        headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
+      });
+    }
+
     // 疎通確認用（メールは送らない）
     if (url.pathname === '/api/health') {
       return new Response(
