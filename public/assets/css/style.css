@@ -182,7 +182,7 @@ h1, h2, h3, h4 { font-family: var(--serif); color: var(--ink); font-weight: 500;
   content: '';
   position: absolute;
   inset: 0;
-  background: url('assets/img/hero.jpg') center/cover no-repeat;
+  background: url('../img/hero.jpg') center/cover no-repeat;
   opacity: 0.18;
   mix-blend-mode: overlay;
 }
