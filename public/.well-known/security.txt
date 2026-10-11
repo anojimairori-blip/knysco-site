@@ -1,0 +1,5 @@
+# セキュリティ上の問題の連絡先 (RFC 9116)
+Contact: https://kny-s.co.jp/contact.html
+Expires: 2027-10-10T15:00:00.000Z
+Preferred-Languages: ja, en
+Canonical: https://kny-s.co.jp/.well-known/security.txt
