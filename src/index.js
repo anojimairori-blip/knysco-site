@@ -268,6 +268,12 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
+    // www.kny-s.co.jp -> kny-s.co.jp 301 (path and query kept). 2026-10-21 site check B.
+    if (url.hostname.startsWith('www.')) {
+      url.hostname = url.hostname.slice(4);
+      return Response.redirect(url.toString(), 301);
+    }
+
     if (url.pathname === '/api/contact') {
       return handleContact(request, env);
     }
