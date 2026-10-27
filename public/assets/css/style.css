@@ -903,3 +903,6 @@ h1, h2, h3, h4 { font-family: var(--serif); color: var(--ink); font-weight: 500;
     margin-bottom: 5mm;
   }
 }
+
+/* 電話の札：上に少し浮く（2026-10-28 インラインの onmouseover の代わり） */
+.tel-lift:hover{transform:translateY(-3px)}
