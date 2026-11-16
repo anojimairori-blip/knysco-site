@@ -182,7 +182,7 @@ h1, h2, h3, h4 { font-family: var(--serif); color: var(--ink); font-weight: 500;
   content: '';
   position: absolute;
   inset: 0;
-  background: url('../img/hero.jpg') center/cover no-repeat;
+  background: url('../img/hero.webp') center/cover no-repeat; /* 2026-11-17 速さ: 805KB の jpg → WebP（薄く重ねる飾り） */
   opacity: 0.18;
   mix-blend-mode: overlay;
 }
